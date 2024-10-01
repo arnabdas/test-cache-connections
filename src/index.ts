@@ -6,6 +6,8 @@ console.log("REDIS_CLUSTER_HOST => ", process.env.REDIS_CLUSTER_HOST);
 
 (async () => {
   try {
+    const previousData = await redisCache.fetch<string>("my-key");
+    console.log(`\n`, previousData);
     await redisCache.save("my-key", "Hello, Redis!", 60);
     const data = await redisCache.fetch<string>("my-key");
     console.log(data);
