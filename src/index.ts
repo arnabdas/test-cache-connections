@@ -36,6 +36,12 @@ const rl = readline.createInterface({
           console.log("Resetting cache...");
           await redisCache.reset();
           break;
+        case 5:
+          console.log("Deleting user profile cache...");
+          await redisCache.delete(`user_profile:46`);
+          // for (let id = 1; id <= 768; id++)
+          //   await redisCache.delete(`user_profile:${id}`);
+          break;
         case 9:
           await redisCache.close();
           return;
